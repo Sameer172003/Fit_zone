@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Payment</title>
+    <!-- <link rel="stylesheet" href="/static/css/styles.css"> -->
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #f3f4f6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .payment-box {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            width: 450px;
+        }
+        h2 {
+            color: #333;
+            margin-bottom: 15px;
+        }
+        .amount {
+            font-size: 18px;
+            font-weight: bold;
+            color: #1a73e8;
+            margin-bottom: 15px;
+        }
+        img {
+            max-width: 200px;
+            margin: 10px 0;
+        }
+        .upi-id {
+            background: #f0f0f0;
+            padding: 10px;
+            border-radius: 6px;
+            font-weight: bold;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+        .copied {
+            color: green;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+        .note {
+            color: #777;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+        .confirm-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #1a73e8;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        .confirm-button:hover {
+            background-color: #155ab6;
+        }
+    </style>
+</head>
+<body>
+    <div class="payment-box">
+        <h2>Complete Your Payment</h2>
+
+        <div class="amount">Membership Fee: ₹{{ amount }}</div>
+
+        <img src="/static/images/upi_qr.jpg" alt="UPI QR Code">
+
+        <div class="upi-id" onclick="copyUPI()">ojhasameer24@okaxis</div>
+        <div id="copyStatus" class="copied"></div>
+
+        <p class="note">Scan QR with Google Pay / PhonePe / Paytm or use the UPI ID above to complete your payment.</p>
+
+        <!-- Use POST to preserve the selected months -->
+        <form method="POST" action="{{ url_for('confirm') }}">
+            <input type="hidden" name="months" value="{{ months }}">
+            <button type="submit" class="confirm-button">I've Paid</button>
+        </form>
+    </div>
+
+    <script>
+        function copyUPI() {
+            const upiId = 'ojhasameer24@okaxis';
+            navigator.clipboard.writeText(upiId).then(function () {
+                document.getElementById("copyStatus").innerText = "UPI ID copied to clipboard!";
+            });
+        }
+    </script>
+</body>
+</html>

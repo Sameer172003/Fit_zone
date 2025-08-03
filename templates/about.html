@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2 style="text-align: center; margin-top: 20px; color: white;">Welcome, {{ session['username'] }}!</h2>
+<link rel="stylesheet" href="/static/css/styles.css">
+<div class="card-container">
+    <div class="service-card">
+        <h3>🏋️ Strength Training</h3>
+        <img src="/static/images/home_pic.jpg" alt="">
+        <p>Build muscle and gain strength with expert-guided workouts and equipment.</p>
+    </div>
+    <div class="service-card">
+        <h3>🧘 Yoga</h3>
+        <img src="/static/images/home_pic.jpg" alt="">
+        <p>Improve flexibility and reduce stress with our guided yoga sessions.</p>
+    </div>
+    <div class="service-card">
+        <h3>🏃 Cardio</h3>
+        <img src="/static/images/home_pic.jpg" alt="">
+        <p>Boost endurance with our intense and fun cardio workouts.</p>
+    </div>
+    <div class="service-card">
+        <h3>🥗 Nutrition</h3>
+        <img src="/static/images/home_pic.jpg" alt="">
+        <p>Get personalized nutrition plans to fuel your fitness journey.</p>
+    </div>
+</div>
+{% endblock %}
